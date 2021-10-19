@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using System;
 
 namespace APICatalogo
 {
@@ -27,6 +29,18 @@ namespace APICatalogo
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
+
+            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "API Catalogo - Macoratti",
+                Description = "Curso: Web API ASPNET Core essencial",
+                Contact = new OpenApiContact
+                {
+                    Name = "Lucas Pereira",
+                    Email = "lucas.p.oliveira@outlook.pt",
+                    Url = new Uri("https://www.linkedin.com/in/lucas-pereira-cod3r/")
+                }
+            }));
 
             services.AddControllers()
                     .AddNewtonsoftJson(options =>
@@ -52,6 +66,13 @@ namespace APICatalogo
                 app.UseHsts();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.RoutePrefix = "swagger";
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "catalog API");
+                c.DocumentTitle = "Catalog API";
+            });
             //adiciona o middleware de tratamento de erros
             //app.ConfigureExceptionHandler();
 
