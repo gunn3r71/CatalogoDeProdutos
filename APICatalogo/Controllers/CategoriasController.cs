@@ -1,4 +1,4 @@
-﻿using APICatalogo.Context;
+﻿using ApiCatalogo.Data;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

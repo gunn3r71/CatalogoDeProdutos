@@ -1,6 +1,4 @@
-using ApiCatalogo.Extensions;
-using ApiCatalogo.Filters;
-using APICatalogo.Context;
+using ApiCatalogo.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +21,12 @@ namespace APICatalogo
         // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
             //services.AddScoped<ApiLoggingFilter>();
             services.AddDbContext<AppDbContext>(options =>
-            options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            {
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
 
             services.AddControllers()
                     .AddNewtonsoftJson(options =>

@@ -1,5 +1,5 @@
-﻿using ApiCatalogo.Filters;
-using APICatalogo.Context;
+﻿using ApiCatalogo.Data;
+using ApiCatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
