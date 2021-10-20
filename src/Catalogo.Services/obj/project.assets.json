@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "Catalogo.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Catalogo.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Catalogo.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Catalogo.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Catalogo.Domain/Catalogo.Domain.csproj",
+      "msbuildProject": "../Catalogo.Domain/Catalogo.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "Catalogo.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Lucas\\.nuget\\packages\\": {},
@@ -14,9 +33,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Services\\Catalogo.Service.csproj",
-      "projectName": "Catalogo.Service",
-      "projectPath": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Services\\Catalogo.Service.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Services\\Catalogo.Services.csproj",
+      "projectName": "Catalogo.Services",
+      "projectPath": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Services\\Catalogo.Services.csproj",
       "packagesPath": "C:\\Users\\Lucas\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Services\\obj\\",
       "projectStyle": "PackageReference",
@@ -38,7 +57,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Domain\\Catalogo.Domain.csproj": {
+              "projectPath": "C:\\Users\\Lucas\\source\\repos\\gunn3r71\\CatalogoDeProdutos\\src\\Catalogo.Domain\\Catalogo.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Catalogo.Domain.Repositories
 {
@@ -9,12 +10,12 @@ namespace Catalogo.Domain.Repositories
     {
         IQueryable<T> Get();
 
-        T GetById(Expression<Func<T, bool>> predicate);
+        Task<T> GetById(Expression<Func<T, bool>> predicate);
 
-        void Add(T entity);
+        Task Add(T entity);
 
-        void Update(T entity);
+        Task Update(T entity);
 
-        void Delete(T entity);
+        Task Delete(T entity);
     }
 }

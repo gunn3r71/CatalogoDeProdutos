@@ -1,10 +1,4 @@
-﻿using Catalogo.API.Models;
-using Catalogo.Domain.Repositories;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogo.API.Controllers
 {

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Catalogo.Infrastructure.Repositories
 {
@@ -16,19 +17,21 @@ namespace Catalogo.Infrastructure.Repositories
             Context = context;
         }
 
-        public void Add(T entity)
+        public async Task Add(T entity)
         {
-            Context.Set<T>().Add(entity);
+            await Context.Set<T>().AddAsync(entity);
         }
 
-        public void Delete(T entity)
+        public Task Delete(T entity)
         {
             Context.Set<T>().Remove(entity);
+            return Task.CompletedTask;
         }
 
-        public void Update(T entity)
+        public Task Update(T entity)
         {
             Context.Set<T>().Update(entity);
+            return Task.CompletedTask;
         }
 
         public IQueryable<T> Get()
@@ -36,9 +39,9 @@ namespace Catalogo.Infrastructure.Repositories
             return Context.Set<T>().AsNoTracking();
         }
 
-        public T GetById(Expression<Func<T, bool>> predicate)
+        public async Task<T> GetById(Expression<Func<T, bool>> predicate)
         {
-            return Context.Set<T>().AsNoTracking().FirstOrDefault(predicate);
+            return await Context.Set<T>().AsNoTracking().FirstOrDefaultAsync(predicate);
         }
     }
 }

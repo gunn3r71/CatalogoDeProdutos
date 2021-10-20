@@ -2,6 +2,7 @@
 using Catalogo.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Catalogo.Infrastructure.Repositories
 {
@@ -11,9 +12,9 @@ namespace Catalogo.Infrastructure.Repositories
         {
         }
 
-        public IEnumerable<Categoria> GetCategoriasProdutos()
+        public async Task<IEnumerable<Categoria>> GetCategoriasProdutos()
         {
-            return Get().Include(x => x.Produtos);
+            return await Get().Include(x => x.Produtos).ToListAsync();
         }
     }
 }
