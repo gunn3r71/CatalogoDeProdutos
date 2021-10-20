@@ -1,0 +1,12 @@
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\bin\Debug\net5.0\Catalogo.Service.deps.json
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\bin\Debug\net5.0\Catalogo.Service.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\bin\Debug\net5.0\ref\Catalogo.Service.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\bin\Debug\net5.0\Catalogo.Service.pdb
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.csproj.AssemblyReference.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.AssemblyInfoInputs.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.AssemblyInfo.cs
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\ref\Catalogo.Service.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Services\obj\Debug\net5.0\Catalogo.Service.pdb

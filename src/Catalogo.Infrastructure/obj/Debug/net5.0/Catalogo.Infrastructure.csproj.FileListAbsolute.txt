@@ -1,0 +1,15 @@
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.AssemblyInfo.cs
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\Catalogo.Infrastructure.deps.json
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\Catalogo.Infrastructure.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\ref\Catalogo.Infrastructure.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\Catalogo.Infrastructure.pdb
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\Catalogo.Domain.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\bin\Debug\net5.0\Catalogo.Domain.pdb
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.csproj.CopyComplete
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\ref\Catalogo.Infrastructure.dll
+C:\Users\Lucas\source\repos\gunn3r71\CatalogoDeProdutos\src\Catalogo.Infrastructure\obj\Debug\net5.0\Catalogo.Infrastructure.pdb
