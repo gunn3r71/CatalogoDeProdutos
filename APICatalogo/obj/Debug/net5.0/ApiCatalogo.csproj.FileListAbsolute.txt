@@ -112,3 +112,5 @@ C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\bin\Debug\ne
 C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\obj\Debug\net5.0\ApiCatalogo.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\bin\Debug\net5.0\ApiCatalogo.xml
+C:\Users\Lucas\Source\Repos\gunn3r71\CatalogoDeProdutos\APICatalogo\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll

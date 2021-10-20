@@ -1,104 +1,130 @@
-﻿using ApiCatalogo.Data;
+﻿using ApiCatalogo.UnitOfWork;
 using APICatalogo.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ApiCatalogo.Controllers
 {
-    [Route("api/[Controller]")]
-    [ApiController]
-    public class CategoriasController : ControllerBase
+    /// <summary>
+    /// Controller de categorias
+    /// </summary>
+    [Route("api/v1/[Controller]")]
+    public class CategoriasController : BaseController
     {
-        private readonly AppDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
-        public CategoriasController(AppDbContext contexto, IConfiguration config)
+
+        public CategoriasController(IUnitOfWork unitOfWork, IConfiguration config)
         {
-            _context = contexto;
+            _unitOfWork = unitOfWork;
             _configuration = config;
         }
 
-        //[HttpGet("autor")]
-        //public string GetAutor()
-        //{
-        //    var autor = _configuration["autor"];
-        //    var conexao = _configuration["ConnectionStrings:DefaultConnection"];
-
-        //    return $"Autor : {autor}  Conexao: {conexao}";
-        //}
-
+        /// <summary>
+        /// Lista produtos por categoria
+        /// </summary>
+        /// <returns>Lista de produtos por categoria</returns>
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(IEnumerable<Categoria>))]
+        public IActionResult GetCategoriasProdutos()
         {
-            return _context.Categorias.Include(x=> x.Produtos).ToList();
+            var categorias = _unitOfWork.CategoriaRepository.GetCategoriasProdutos();
+            return Ok(categorias);
         }
 
+        /// <summary>
+        /// Lista categorias
+        /// </summary>
+        /// <returns>Lista de categorias</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> Get()
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(IEnumerable<Categoria>))]
+        public IActionResult Get()
         {
-            return _context.Categorias.AsNoTracking().ToList();
+            var categorias = _unitOfWork.CategoriaRepository.Get().ToList();
+            return Ok(categorias);
         }
 
-        [HttpGet("{id}", Name = "ObterCategoria")]
-        public ActionResult<Categoria> Get(int id)
+        /// <summary>
+        /// Obtem categoria por id
+        /// </summary>
+        /// <param name="id">id da categoria a ser buscada</param>
+        /// <returns>Categoria</returns>
+        [HttpGet("{id:int}", Name = "ObterCategoria")]
+        [ProducesResponseType(statusCode: StatusCodes.Status200OK, Type = typeof(Categoria))]
+        [ProducesResponseType(statusCode: StatusCodes.Status404NotFound)]
+        public IActionResult Get(int id)
         {
-            var categoria = _context.Categorias.AsNoTracking()
-                .FirstOrDefault(p => p.CategoriaId == id);
+            var categoria = _unitOfWork.CategoriaRepository.GetById(x => x.CategoriaId == id);
 
             if (categoria == null)
             {
                 return NotFound();
             }
-            return categoria;
+            return Ok(categoria);
         }
 
+        /// <summary>
+        /// Cria uma categoria
+        /// </summary>
+        /// <param name="categoria">Modelo de categoria a ser criada</param>
+        /// <returns>Endereço da categoria criada</returns>
         [HttpPost]
-        public ActionResult Post([FromBody]Categoria categoria)
+        [ProducesResponseType(statusCode: StatusCodes.Status201Created)]
+        [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+        public IActionResult Post([FromBody]Categoria categoria)
         {
-            //if(!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
+            _unitOfWork.CategoriaRepository.Add(categoria);
+            _unitOfWork.Commit();
 
-            _context.Categorias.Add(categoria);
-            _context.SaveChanges();
-
-            return new CreatedAtRouteResult("ObterCategoria",
-                new { id = categoria.CategoriaId }, categoria);
+            return CreatedAtAction("ObterCategoria",
+                new { id = categoria.CategoriaId });
         }
 
-        [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] Categoria categoria)
+        /// <summary>
+        /// Atualiza uma categoria
+        /// </summary>
+        /// <param name="id">id da categoria a ser atualizada</param>
+        /// <param name="categoria">Modelo de categoria a ser atualizada</param>
+        /// <returns></returns>
+        [HttpPut("{id:int}")]
+        [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+        [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+        public IActionResult Put(int id, [FromBody] Categoria categoria)
         {
-            //if(!ModelState.IsValid)
-            //{
-            //    return BadRequest(ModelState);
-            //}
             if (id != categoria.CategoriaId)
             {
-                return BadRequest();
+                return BadRequest(categoria);
             }
 
-            _context.Entry(categoria).State = EntityState.Modified;
-            _context.SaveChanges();
-            return Ok();
+            _unitOfWork.CategoriaRepository.Update(categoria);
+            _unitOfWork.Commit();
+
+            return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public ActionResult<Categoria> Delete(int id)
+        /// <summary>
+        /// Deleta uma categoria
+        /// </summary>
+        /// <param name="id">Id da categoria a ser deletada</param>
+        /// <returns></returns>
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(statusCode: StatusCodes.Status204NoContent)]
+        [ProducesResponseType(statusCode: StatusCodes.Status400BadRequest)]
+        public IActionResult Delete(int id)
         {
-            var categoria = _context.Categorias.FirstOrDefault(p => p.CategoriaId == id);
-            //var categoria = _context.Categorias.Find(id);
-
+            var categoria = _unitOfWork.CategoriaRepository.GetById(p => p.CategoriaId == id);
+            
             if (categoria == null)
             {
                 return NotFound();
             }
-            _context.Categorias.Remove(categoria);
-            _context.SaveChanges();
-            return categoria;
+            _unitOfWork.CategoriaRepository.Delete(categoria);
+            _unitOfWork.Commit();
+
+            return NoContent();
         }
     }
 }

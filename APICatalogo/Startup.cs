@@ -1,12 +1,15 @@
 using ApiCatalogo.Data;
+using ApiCatalogo.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
 
 namespace APICatalogo
 {
@@ -24,23 +27,34 @@ namespace APICatalogo
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
+
             //services.AddScoped<ApiLoggingFilter>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddDbContext<AppDbContext>(options =>
             {
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
 
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo
-            {
-                Title = "API Catalogo - Macoratti",
-                Description = "Curso: Web API ASPNET Core essencial",
-                Contact = new OpenApiContact
+            services.AddSwaggerGen(c => {
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Name = "Lucas Pereira",
-                    Email = "lucas.p.oliveira@outlook.pt",
-                    Url = new Uri("https://www.linkedin.com/in/lucas-pereira-cod3r/")
-                }
-            }));
+                    Title = "API Catalogo - Macoratti",
+                    Description = "Curso: Web API ASPNET Core essencial",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Lucas Pereira",
+                        Email = "lucas.p.oliveira@outlook.pt",
+                        Url = new Uri("https://www.linkedin.com/in/lucas-pereira-cod3r/")
+                    }
+                });
+                var applicationBasePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var applicationName = PlatformServices.Default.Application.ApplicationName;
+                var xmlDocumentPath = Path.Combine(applicationBasePath, $"{applicationName}.xml");
+
+                if (File.Exists(xmlDocumentPath))
+                    c.IncludeXmlComments(xmlDocumentPath);
+            });
 
             services.AddControllers()
                     .AddNewtonsoftJson(options =>
